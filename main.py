@@ -1,15 +1,29 @@
 import customtkinter
-from .Modules.randomizer import randomizer
-
-def button_create():
-    print(randomizer)
+from Modules.randomizer import randomizer
 
 
-app = customtkinter.CTk()
-app.geometry("400x150")
+class PasswordGenerator:
+    def __init__(self):
+        self.app = customtkinter.CTk()
+        self.app.geometry("400x150")
+
+        self.slider_value: int = 5
+
+        self.button = customtkinter.CTkButton(
+            self.app, text='Create', command=self.button_create)
+        self.button.pack(padx=20, pady=20)
+
+        self.slider = customtkinter.CTkSlider(
+            self.app, from_=5, to=50, command=self.slider_event)
+        self.slider.pack(padx=20, pady=20)
+
+    def slider_event(self, value):
+        self.slider_value = value
+
+    def button_create(self):
+        print(randomizer(self.slider_value))
 
 
-button = customtkinter.CTkButton(app, text='Create', command=button_create)
-button.pack(padx=20, pady=20)
-
-app.mainloop()
+if __name__ == "__main__":
+    my_app = PasswordGenerator()
+    my_app.app.mainloop()
