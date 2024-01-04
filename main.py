@@ -6,14 +6,20 @@ class PasswordGenerator:
     def __init__(self):
         self.app = customtkinter.CTk()
         self.app.geometry("400x250")
-        self.grid_rowconfigure(0, weight=1)  # configure grid system
-        self.grid_columnconfigure(0, weight=1)
 
         self.slider_value: int = 10
         self.alpha_maj: bool = customtkinter.BooleanVar(value=True)
         self.nums: bool = customtkinter.BooleanVar(value=True)
         self.special_chars: bool = customtkinter.BooleanVar(value=True)
         self.word: str = ''
+
+        self.text_box = customtkinter.CTkTextbox(
+            self.app, width=400, height=25
+        )
+
+        self.text_box.pack(padx=20, pady=20)
+        self.text_box.insert('0.0', str(randomizer(10)))
+        self.text_box.configure(state="disabled")
 
         self.button = customtkinter.CTkButton(
             self.app, text='Create', command=self.button_create)
@@ -44,14 +50,6 @@ class PasswordGenerator:
             self.app, text=str(self.slider_value)
         )
         self.label_len.pack()
-
-        self.text_box = customtkinter.CTkTextbox(
-            self.app, width=400, height=25
-        )
-
-        self.text_box.pack(padx=20, pady=20)
-        self.text_box.insert('0.0', str(randomizer(10)))
-        self.text_box.configure(state="disabled")
 
     def slider_event(self, value: float):
         v = int(value)
