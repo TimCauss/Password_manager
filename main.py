@@ -5,7 +5,7 @@ from Modules.randomizer import randomizer
 class PasswordGenerator:
     def __init__(self):
         self.app = customtkinter.CTk()
-        self.app.geometry("400x150")
+        self.app.geometry("400x250")
 
         self.slider_value: int = 10
         self.word: str = ''
@@ -25,6 +25,14 @@ class PasswordGenerator:
         )
         self.label_len.pack()
 
+        self.text_box = customtkinter.CTkTextbox(
+            self.app, width=400, height=25
+        )
+
+        self.text_box.pack(padx=20, pady=20)
+        self.text_box.insert('0.0', str(randomizer(10)))
+        self.text_box.configure(state="disabled")
+
     def slider_event(self, value: float):
         v = int(value)
         self.slider_value = v
@@ -33,6 +41,10 @@ class PasswordGenerator:
     def button_create(self):
         print(randomizer(self.slider_value))
         self.word = randomizer(self.slider_value)
+        self.text_box.configure(state="normal")
+        self.text_box.delete("0.0", 'end')
+        self.text_box.insert("0.0", str(self.word))
+        self.text_box.configure(state="disabled")
 
 
 if __name__ == "__main__":
