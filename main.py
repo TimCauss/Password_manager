@@ -8,6 +8,9 @@ class PasswordGenerator:
         self.app.geometry("400x250")
 
         self.slider_value: int = 10
+        self.alpha_maj: bool = True
+        self.nums: bool = True
+        self.special_chars = True
         self.word: str = ''
 
         self.button = customtkinter.CTkButton(
