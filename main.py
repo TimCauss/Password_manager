@@ -4,8 +4,8 @@ from Modules.randomizer import randomizer
 
 class PasswordGenerator:
     def __init__(self):
-        self.app = customtkinter.CTk()
-        self.app.geometry("400x250")
+        self.pass_gen = customtkinter.CTk()
+        self.pass_gen.geometry("500x350")
 
         self.slider_value: int = 10
         self.alpha_maj: bool = customtkinter.BooleanVar(value=True)
@@ -14,7 +14,7 @@ class PasswordGenerator:
         self.word: str = ''
 
         self.text_box = customtkinter.CTkTextbox(
-            self.app, width=400, height=25
+            self.pass_gen, width=400, height=25
         )
 
         self.text_box.pack(padx=20, pady=20)
@@ -22,32 +22,32 @@ class PasswordGenerator:
         self.text_box.configure(state="disabled")
 
         self.button = customtkinter.CTkButton(
-            self.app, text='Create', command=self.button_create)
+            self.pass_gen, text='Create', command=self.button_create)
         self.button.pack(padx=20, pady=20)
 
         self.alpha_maj_checkbox = customtkinter.CTkCheckBox(
-            self.app, text="Maj.", variable=self.alpha_maj,
+            self.pass_gen, text="Maj.", variable=self.alpha_maj,
         )
         self.alpha_maj_checkbox.pack()
 
         self.nums_checkbox = customtkinter.CTkCheckBox(
-            self.app, text="Numbers", variable=self.nums,
+            self.pass_gen, text="Numbers", variable=self.nums,
         )
         self.nums_checkbox.pack()
 
         self.spec_chars_checkbox = customtkinter.CTkCheckBox(
-            self.app, text="Spec", variable=self.special_chars,
+            self.pass_gen, text="Spec", variable=self.special_chars,
         )
         self.spec_chars_checkbox.pack()
 
         self.slider = customtkinter.CTkSlider(
-            self.app, from_=10, to=50, number_of_steps=40,
+            self.pass_gen, from_=10, to=50, number_of_steps=40,
             command=self.slider_event)
         self.slider.set(10)
         self.slider.pack(padx=20, pady=20)
 
         self.label_len = customtkinter.CTkLabel(
-            self.app, text=str(self.slider_value)
+            self.pass_gen, text=str(self.slider_value)
         )
         self.label_len.pack()
 
@@ -68,4 +68,4 @@ class PasswordGenerator:
 
 if __name__ == "__main__":
     my_app = PasswordGenerator()
-    my_app.app.mainloop()
+    my_app.pass_gen.mainloop()
