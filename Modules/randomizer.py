@@ -1,22 +1,16 @@
-import random
-
-# Var
-alpha_min = "abcdefghijklmnopqrstuvwxyz"
-alpha_maj = "ABCDEJGHIJKLMNOPQRSTUVWXYZ"
-num = "0123456789"
-special_char = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~" + '\"'
-
-all_chars = f"{alpha_min}{alpha_maj}{num}{special_char}"
+import secrets
+import string
 
 
 # Function who return a string from args
-def randomizer(length: int, use_alpha_maj=True, use_num=True, use_specials=True) -> str:
-    characters = alpha_min
+def randomizer(length: int, use_alpha_maj=True,
+               use_num=True,
+               use_specials=True) -> str:
+    characters = string.ascii_lowercase
     if use_alpha_maj:
-        characters += alpha_maj
+        characters += string.ascii_uppercase
     if use_num:
-        characters += num
+        characters += string.digits
     if use_specials:
-        characters += special_char
-
-    return ''.join(random.choice(characters) for _ in range(length))
+        characters += string.punctuation
+    return ''.join(secrets.choice(characters) for _ in range(length))
