@@ -31,7 +31,7 @@ class PasswordCreator:
                           self.numbers + self.special_chars))
         self.password_content = {
             "upper": self.uppers, "numbers": self.numbers,
-            "special chars": self.special_chars
+            "special chars": self.special_chars, "lowers": self.lowers
         }
         self.password = self.generate_password()
 
