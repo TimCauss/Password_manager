@@ -33,15 +33,12 @@ class PasswordCreator:
             "upper": self.uppers, "numbers": self.numbers,
             "special chars": self.special_chars
         }
-
-    def calcul_password_content(self) -> dict:
-        """return password config"""
-        return self.password_content
+        self.password = self.generate_password()
 
     def generate_password(self) -> str:
         """Generates a random password based on specified options."""
         password_tmp = ''
-        password_tmp_mixed = []
+        password_tmp_mixed = ''
         for _ in range(self.lowers):
             password_tmp += password_tmp.join(
                 secrets.choice(string.ascii_lowercase))
@@ -54,13 +51,22 @@ class PasswordCreator:
         for _ in range(self.special_chars):
             password_tmp += password_tmp.join(
                 secrets.choice(string.punctuation))
-        list_password_tmp = list(password_tmp)
-        while len(list_password_tmp) > 0:
-            password_tmp_mixed += list_password_tmp.pop(
-                secrets.choice(range(len(list_password_tmp))))
-        print(f"pass not mixed: {password_tmp}\n")
-        return (password_tmp_mixed)
+        password_tmp_mixed = self.mix_password(password_tmp)
 
-    def show_config(self) -> dict:
+        return password_tmp_mixed
+
+    def get_password_config(self) -> dict:
         """Return the config dict"""
         return self.password_content
+
+    def password(self) -> str:
+        return self.password
+
+    def mix_password(self, word=None) -> str:
+        if word is None:
+            word = self.password
+        list_word = list(word)
+        tmp_word = ''
+        while len(list_word) > 0:
+            tmp_word += list_word.pop(secrets.choice(range(len(list_word))))
+        return tmp_word
