@@ -1,7 +1,7 @@
 import pytest
 import string
 import random
-from Modules.randomizer import PasswordCreator
+from Modules.PasswordCreator import PasswordCreator
 
 
 class TestPasswordCreator:
