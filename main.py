@@ -1,8 +1,8 @@
 import customtkinter
-from Modules.randomizer import randomizer
+from Modules.PasswordCreator import randomizer
 
 
-class PasswordGenerator:
+class PasswordGeneratorWindow:
     def __init__(self):
         self.pass_gen = customtkinter.CTk()
         self.pass_gen.geometry("500x350")
@@ -67,5 +67,5 @@ class PasswordGenerator:
 
 
 if __name__ == "__main__":
-    my_app = PasswordGenerator()
+    my_app = PasswordGeneratorWindow()
     my_app.pass_gen.mainloop()
