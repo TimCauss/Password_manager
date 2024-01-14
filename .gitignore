@@ -1,7 +1,6 @@
+/.vscode
 /.venv
-Modules/__pycache__/__init__.cpython-311.pyc
+/Tests/__pycache__
 Modules/__pycache__/randomizer.cpython-311.pyc
-Tests/__pycache__/__init__.cpython-311.pyc
-Tests/__pycache__/test_randomizer.cpython-311-pytest-7.4.4.pyc
-Tests/__pycache__/test_PasswordCreator.cpython-311-pytest-7.4.4.pyc
+Modules/__pycache__/__init__.cpython-311.pyc
 Modules/test.py
