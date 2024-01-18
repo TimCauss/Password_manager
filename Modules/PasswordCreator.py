@@ -73,3 +73,5 @@ class PasswordCreator:
         while len(list_word) > 0:
             tmp_word += list_word.pop(secrets.choice(range(len(list_word))))
         return tmp_word
+
+
