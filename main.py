@@ -66,6 +66,18 @@ class PasswordGeneratorWindow:
         self.text_box.configure(state="disabled")
 
 
+class LoginPage:
+    def __init__(self):
+        self.login_window = customtkinter.CTk()
+        self.login_window.geometry("250x200")
+
+        self.login_box = customtkinter.CTkTextbox(
+            self.login_window, width=200, height=25)
+        self.login_box.pack(padx=20, pady=20)
+
+
 if __name__ == "__main__":
-    my_app = PasswordGeneratorWindow()
-    my_app.pass_gen.mainloop()
+    # my_app = PasswordGeneratorWindow()
+    # my_app.pass_gen.mainloop()
+    app = LoginPage()
+    app.login_window.mainloop()
