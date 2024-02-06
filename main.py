@@ -1,4 +1,5 @@
 import customtkinter
+from Libs.utils import hash_password
 from Modules.PasswordCreator import randomizer
 
 
@@ -66,18 +67,34 @@ class PasswordGeneratorWindow:
         self.text_box.configure(state="disabled")
 
 
-class LoginPage:
+class CreatePage:
     def __init__(self):
-        self.login_window = customtkinter.CTk()
-        self.login_window.geometry("250x200")
+        self.create_window = customtkinter.CTk()
+        self.create_window.geometry("250x200")
 
-        self.login_box = customtkinter.CTkTextbox(
-            self.login_window, width=200, height=25)
-        self.login_box.pack(padx=20, pady=20)
+        self.label_create_page = customtkinter.CTkLabel(
+            self.create_window, text="Creation Page")
+        self.label_create_page.pack(padx=5, pady=5)
+
+        self.create_box = customtkinter.CTkTextbox(
+            self.create_window, width=200, height=25)
+        self.create_box.pack(padx=10, pady=5)
+
+        self.pwd_box = customtkinter.CTkTextbox(
+            self.create_window, width=200, height=25)
+        self.pwd_box.pack(padx=10, pady=5)
+
+        # Ajouter un bouton de Creation d'utilisateur
+        self.create_button = customtkinter.CTkButton(
+            self.create_window, text="Create", command=self.create_user)
+        self.create_button.pack(padx=10, pady=5)
+
+    def create_user(self):
+        pass
 
 
 if __name__ == "__main__":
     # my_app = PasswordGeneratorWindow()
     # my_app.pass_gen.mainloop()
-    app = LoginPage()
-    app.login_window.mainloop()
+    app = CreatePage()
+    app.create_window.mainloop()
